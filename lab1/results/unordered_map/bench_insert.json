@@ -1,0 +1,88 @@
+{
+  "context": {
+    "date": "2025-10-27T18:50:53+03:00",
+    "host_name": "pcvm",
+    "executable": "/home/user/Desktop/high_performance_cpp/lab1/build/bin/lab1",
+    "num_cpus": 4,
+    "mhz_per_cpu": 3294,
+    "cpu_scaling_enabled": false,
+    "aslr_enabled": false,
+    "caches": [
+      {
+        "type": "Data",
+        "level": 1,
+        "size": 32768,
+        "num_sharing": 1
+      },
+      {
+        "type": "Instruction",
+        "level": 1,
+        "size": 32768,
+        "num_sharing": 1
+      },
+      {
+        "type": "Unified",
+        "level": 2,
+        "size": 524288,
+        "num_sharing": 1
+      },
+      {
+        "type": "Unified",
+        "level": 3,
+        "size": 16777216,
+        "num_sharing": 4
+      }
+    ],
+    "load_avg": [1.77344,1.65088,1.28662],
+    "library_version": "v1.9.4",
+    "library_build_type": "release",
+    "json_schema_version": 1
+  },
+  "benchmarks": [
+    {
+      "name": "Insert_BadHash/16384",
+      "family_index": 0,
+      "per_family_instance_index": 0,
+      "run_name": "Insert_BadHash/16384",
+      "run_type": "iteration",
+      "repetitions": 1,
+      "repetition_index": 0,
+      "threads": 1,
+      "iterations": 3,
+      "real_time": 2.4319210133398882e+08,
+      "cpu_time": 2.4320349966666672e+08,
+      "time_unit": "ns",
+      "items_per_second": 6.7367451629831878e+04
+    },
+    {
+      "name": "Insert_MediumHash/16384",
+      "family_index": 1,
+      "per_family_instance_index": 0,
+      "run_name": "Insert_MediumHash/16384",
+      "run_type": "iteration",
+      "repetitions": 1,
+      "repetition_index": 0,
+      "threads": 1,
+      "iterations": 445,
+      "real_time": 1.2960971730239324e+06,
+      "cpu_time": 1.2960472426966294e+06,
+      "time_unit": "ns",
+      "items_per_second": 1.2641514491331752e+07
+    },
+    {
+      "name": "Insert_GoodHash/16384",
+      "family_index": 2,
+      "per_family_instance_index": 0,
+      "run_name": "Insert_GoodHash/16384",
+      "run_type": "iteration",
+      "repetitions": 1,
+      "repetition_index": 0,
+      "threads": 1,
+      "iterations": 460,
+      "real_time": 1.2164840739190010e+06,
+      "cpu_time": 1.2164096500000006e+06,
+      "time_unit": "ns",
+      "items_per_second": 1.3469146680972148e+07
+    }
+  ]
+}
