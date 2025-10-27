@@ -1,0 +1,6 @@
+.vscode/
+*build/
+env/
+build_perf.sh
+commands.txt
+test.cpp
