@@ -1,5 +1,6 @@
 .vscode/
 *build/
+*__pycache__
 env/
 build_perf.sh
 commands.txt
