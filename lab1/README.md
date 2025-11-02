@@ -51,51 +51,30 @@ struct GoodHash {
 
 - erase
 
-|||
-|--------|--------|
-| ![erase](./plots/unordered_map/erase_7BadHash.png)| ![insert](./plots/own_hashmap/erase_7BadHash.png)|
+![insert](./plots/erase_7BadHash.png)
 
-|||
-|--------|--------|
-| ![erase](./plots/unordered_map/erase_10MediumHash.png)| ![insert](./plots/own_hashmap/erase_10MediumHash.png)|
+![insert](./plots/erase_10MediumHash.png)
 
-|||
-|--------|--------|
-| ![erase](./plots/unordered_map/erase_8GoodHash.png)| ![insert](./plots/own_hashmap/erase_8GoodHash.png)|
+![insert](./plots/erase_8GoodHash.png)
 
 - insert
 
-|||
-|--------|--------|
-| ![insert](./plots/unordered_map/insert_7BadHash.png)| ![insert](./plots/own_hashmap/insert_7BadHash.png)|
+![insert](./plots/insert_7BadHash.png)
 
-|||
-|--------|--------|
-| ![insert](./plots/unordered_map/insert_10MediumHash.png)| ![insert](./plots/own_hashmap/insert_10MediumHash.png)|
+![insert](./plots/insert_10MediumHash.png)
 
-|||
-|--------|--------|
-| ![insert](./plots/unordered_map/insert_8GoodHash.png)| ![insert](./plots/own_hashmap/insert_8GoodHash.png)|
-
+![insert](./plots/insert_8GoodHash.png)
 
 - find
 
-|||
-|--------|--------|
-| ![find](./plots/unordered_map/find_7BadHash.png)| ![insert](./plots/own_hashmap/find_7BadHash.png)|
+![insert](./plots/find_7BadHash.png)
 
-|||
-|--------|--------|
-| ![find](./plots/unordered_map/find_10MediumHash.png)| ![insert](./plots/own_hashmap/find_10MediumHash.png)|
+![insert](./plots/find_10MediumHash.png)
 
-|||
-|--------|--------|
-| ![find](./plots/unordered_map/find_8GoodHash.png)| ![insert](./plots/own_hashmap/find_8GoodHash.png)|
+![insert](./plots/find_8GoodHash.png)
 
 
-Видно что для всех операций количество коллизий сильно влияет на время итерации
-
-Графики сгенерированы на основе полученных задержек с помощью chrono
+Видно что для всех операций количество коллизий сильно влияет на время итерации. Графики сгенерированы на основе полученных задержек с помощью chrono
 
 ### Сэмплирование
 
@@ -114,24 +93,13 @@ perf script | "${FLAMEGRAPH_DIR}/stackcollapse-perf.pl" | \
           "${FLAMEGRAPH_DIR}/flamegraph.pl" > "${PLOTS_DIR}/flame_${op,,}.svg"
 ```
 
-Флеймграф для каждой операции std::unordered_map представлены ниже
-
-- erase
-![erase](./plots/unordered_map/flame_erase.svg)
-
-- insert
-![insert](./plots/unordered_map/flame_insert.svg)
-
-- find
-![find](./plots/unordered_map/flame_find.svg)
-
 Флеймграф для каждой операции собственной хэш-таблицы представлены ниже
 
 - erase
-![erase](./plots/own_hashmap/flame_erase.svg)
+![erase](./plots/flame_erase.svg)
 
 - insert
-![insert](./plots/own_hashmap/flame_insert.svg)
+![insert](./plots/flame_insert.svg)
 
 - find
-![find](./plots/own_hashmap/flame_find.svg)
+![find](./plots/flame_find.svg)
