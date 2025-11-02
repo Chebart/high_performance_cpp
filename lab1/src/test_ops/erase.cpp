@@ -56,7 +56,7 @@ static void BM_Erase(benchmark::State& state) {
     write_durations_csv(
         "./results/ops_distr.csv", 
         "erase", 
-        typeid(MapType<int, std::string, Hash>).name(), 
+        "OwnHashMap",
         typeid(Hash).name(), 
         durations_us
     );
@@ -64,11 +64,7 @@ static void BM_Erase(benchmark::State& state) {
 }
 
 #define REGISTER_Erase_Map(MAP, HASH, NAME) \
-    BENCHMARK_TEMPLATE(BM_Erase, MAP, HASH)->Arg(1<<16)->Name("Erase_" NAME);
-
-//REGISTER_Erase_Map(std::unordered_map, BadHash, "BadHash");
-//REGISTER_Erase_Map(std::unordered_map, MediumHash, "MediumHash");
-//REGISTER_Erase_Map(std::unordered_map, GoodHash, "GoodHash");
+    BENCHMARK_TEMPLATE(BM_Erase, MAP, HASH)->RangeMultiplier(2)->Range(1<<10, 1<<14)->Name("Erase_" NAME);
 
 REGISTER_Erase_Map(OwnHashMap, BadHash, "BadHash");
 REGISTER_Erase_Map(OwnHashMap, MediumHash, "MediumHash");

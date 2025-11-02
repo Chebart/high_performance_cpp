@@ -49,7 +49,7 @@ static void BM_Insert(benchmark::State& state) {
     write_durations_csv(
         "./results/ops_distr.csv", 
         "insert", 
-        typeid(MapType<int, std::string, Hash>).name(), 
+        "OwnHashMap",
         typeid(Hash).name(), 
         durations_us
     );
@@ -57,11 +57,7 @@ static void BM_Insert(benchmark::State& state) {
 }
 
 #define REGISTER_Insert_Map(MAP, HASH, NAME) \
-    BENCHMARK_TEMPLATE(BM_Insert, MAP, HASH)->Arg(1<<16)->Name("Insert_" NAME);
-
-//REGISTER_Insert_Map(std::unordered_map, BadHash, "BadHash");
-//REGISTER_Insert_Map(std::unordered_map, MediumHash, "MediumHash");
-//REGISTER_Insert_Map(std::unordered_map, GoodHash, "GoodHash");
+    BENCHMARK_TEMPLATE(BM_Insert, MAP, HASH)->RangeMultiplier(2)->Range(1<<10, 1<<14)->Name("Insert_" NAME);
 
 REGISTER_Insert_Map(OwnHashMap, BadHash, "BadHash");
 REGISTER_Insert_Map(OwnHashMap, MediumHash, "MediumHash");

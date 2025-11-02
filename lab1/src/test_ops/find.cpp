@@ -55,7 +55,7 @@ static void BM_Find(benchmark::State& state) {
     write_durations_csv(
         "./results/ops_distr.csv", 
         "find", 
-        typeid(MapType<int, std::string, Hash>).name(), 
+        "OwnHashMap",
         typeid(Hash).name(), 
         durations_us
     );
@@ -63,11 +63,7 @@ static void BM_Find(benchmark::State& state) {
 }
 
 #define REGISTER_Find_Map(MAP, HASH, NAME) \
-    BENCHMARK_TEMPLATE(BM_Find, MAP, HASH)->Arg(1<<16)->Name("Find_" NAME);
-
-//REGISTER_Find_Map(std::unordered_map, BadHash, "BadHash");
-//REGISTER_Find_Map(std::unordered_map, MediumHash, "MediumHash");
-//REGISTER_Find_Map(std::unordered_map, GoodHash, "GoodHash");
+    BENCHMARK_TEMPLATE(BM_Find, MAP, HASH)->RangeMultiplier(2)->Range(1<<10, 1<<14)->Name("Find_" NAME);
 
 REGISTER_Find_Map(OwnHashMap, BadHash, "BadHash");
 REGISTER_Find_Map(OwnHashMap, MediumHash, "MediumHash");
