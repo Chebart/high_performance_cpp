@@ -18,16 +18,24 @@ def draw_plots(file_dir: str, out_dir: str):
             hash_types = map_df['hash_type'].unique()
             for hash_type in hash_types:
                 hash_df = map_df[map_df['hash_type'] == hash_type]
+
                 durations = hash_df['duration_us'].dropna()
-                # durations = np.log(hash_df['duration_us'].dropna())
                 if durations.empty:
                     continue
 
-                num_bins = len(durations.unique()) // 2
-                #num_bins = 25
+                low, high = durations.quantile([0.01, 0.99])
+                durations = durations[(durations >= low) & (durations <= high)]
                 plt.figure(figsize=(10, 6))
-                plt.hist(durations, bins=num_bins, alpha=0.7, density=True)
-                plt.xlabel("Operation time (µs)")
+                plt.hist(
+                    durations, 
+                    bins=6, 
+                    alpha=0.7, 
+                    weights=np.ones_like(durations) / len(durations),    
+                    edgecolor='black',
+                    linewidth=1.2,
+                    color='skyblue'
+                )
+                plt.xlabel("Operation time")
                 plt.ylabel("Probability")
                 plt.title(f"{op_name} -  {hash_type}")
                 filename = f"{out_dir}/{op_name}_{hash_type}.png"

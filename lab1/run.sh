@@ -28,7 +28,7 @@ for op in "${OPERATIONS[@]}"; do
     if command -v perf >/dev/null 2>&1 && [ -d "${FLAMEGRAPH_DIR}" ]; then
         perf record -F 99 -g -- "${BENCH}" --benchmark_filter="${op}"
         perf script | "${FLAMEGRAPH_DIR}/stackcollapse-perf.pl" | \
-          "${FLAMEGRAPH_DIR}/flamegraph.pl" > "${PLOTS_DIR}/flame_${op,,}.svg"
+          "${FLAMEGRAPH_DIR}/flamegraph.pl" --minwidth 0.5 > "${PLOTS_DIR}/flame_${op,,}.svg"
     fi
 done
 
